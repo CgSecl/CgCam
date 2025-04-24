@@ -20,5 +20,7 @@ ngrok hptt 3333
 and copy: the forward link from ngrok
 
 note: you need to install ngrok first
+
 =================================ENG=================================
+
 NOTE: This was built for kali linux % Termux for phone user

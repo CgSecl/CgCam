@@ -16,7 +16,7 @@ cd CgCam
 chmod +x CgCam.sh
 ./CgCam.sh
 ```
-## Then send direct link to vivtim and done.
+## Then send direct link to victim and done.
 
 note: you need to install ngrok first
 

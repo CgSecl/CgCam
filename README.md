@@ -3,7 +3,7 @@ This tool is use for Phishing Camera and Password , Gmail for facebook by clonin
 
 
 
-=============HOW TO USE========================
+=============HOW TO USE==================
 ## If you're on Termux run this first 
 ```
 pkg install php
@@ -24,4 +24,5 @@ ngrok hptt 3333
 and copy: the forward link from ngrok
 
 note: you need to install ngrok first
-===================ENG============================
+
+===================ENG======================

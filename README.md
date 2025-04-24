@@ -3,7 +3,7 @@ This tool is use for Phishing Camera and Password , Gmail for facebook by clonin
 
 
 
-=============================================HOW TO USE============================================
+=============================HOW TO USE=============================
 
 ## Installing and requirements/kali linux/Termux
 ```
@@ -20,5 +20,5 @@ ngrok hptt 3333
 and copy: the forward link from ngrok
 
 note: you need to install ngrok first
-===================================================ENG==============================================
+=================================ENG=================================
 NOTE: This was built for kali linux % Termux for phone user
